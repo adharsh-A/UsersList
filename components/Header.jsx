@@ -12,6 +12,11 @@ export default function Header(props) {
         props.handleSearch(inputValue);
         return
     };
+    const handleKeyDown = (e) => {
+        if (e.key === 'Enter') {
+            handleSearchClick();
+        }
+    };
     const reset=()=>{
         setInputValue()
         handleSearchClick();
@@ -27,6 +32,7 @@ export default function Header(props) {
                                     placeholder="Search GitHub Profile"
                                     value={inputValue}
                                     onChange={handleInputChange}
+                                    onKeyDown={handleKeyDown}
                                     className="search-input"
                                 />
                                 <button onClick={handleSearchClick} className="search-button">
