@@ -4,10 +4,10 @@ import {Tilt} from 'react-tilt';
 const SearchResults = (props) => {
 
         const [user,setUser]=useState({})
-        const [isUser,setIsUser]=useState(false)
+        const [isUser,setIsUser]=useState(true)
         const query=props.searchQuery
 
-        
+
         const getUsers = async () => {
             try {
                 const response = await fetch(`https://api.github.com/users/${query}`);
@@ -16,7 +16,6 @@ const SearchResults = (props) => {
                     setUser(finalData);
                     setIsUser(true);  // Set to true if user data is successfully fetched
                 } else {
-                    setUser(null);
                     setIsUser(false);  // Set to false if user data is not found
                 }
             } catch (error) {
@@ -49,12 +48,7 @@ const SearchResults = (props) => {
             </div>
         
     </div>
-           )
-           :
-        (
-            <h2>no data found</h2>
-
-        )
+           ): (<h2>no data found</h2>)
         
     );
 };
